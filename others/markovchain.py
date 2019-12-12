@@ -3,6 +3,8 @@ from random import random
 from random import randint
 import pickle
 
+#versao inicial do codigo para fazer a cadeia de markov de ordem 0
+#substituida pela outra versao
 
 #Parte que lê o arquivo
 def lerArquivo(caminhoArquivo):

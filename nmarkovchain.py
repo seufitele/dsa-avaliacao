@@ -91,7 +91,11 @@ def gerarPalavra(dict, prevStates):
     #nao encontrou para essa quantidade de estados, 
     # tenta com menos elementos (descartando o primeiro)
     if possibleStates == None:
-        return gerarPalavra(dict, possibleStates[1:])
+
+        if (len(prevStates) > 0):
+            return gerarPalavra(dict, prevStates[1:])
+        else:
+            return ""
 
     #conta quantas variacoes aquele estado possui
     totalOcc = sum(map(lambda chave : possibleStates.get(chave), possibleStates.keys()))
@@ -111,6 +115,19 @@ def gerarPalavra(dict, prevStates):
 
     raise "Erro - não deveria chegar até aqui"
 
+#formata para apresentar as palavras melhor
+def formatar(listaPalavras):
+
+    frase = ""
+
+    for ele in listaPalavras:
+        frase = frase + ele.strip() + " "
+
+    frase = frase.strip().replace(" $c", ",").replace(" $dd", ".")
+    frase = frase + "."  #termina sempre com um ponto final
+    
+    return frase.strip()
+
 #funcao para gerar uma frase a partir de diversas palavras
 def gerarFrase(dict, numberStates = 1):
 
@@ -127,10 +144,16 @@ def gerarFrase(dict, numberStates = 1):
         prevStates = prevStates[max(len(prevStates) - numberStates, 0):]
         palavraAtual = gerarPalavra(dict, prevStates)
     
-    return palavras
+    return formatar(palavras)
 
+ordem = input("Qual a ordem da cadeia a ser utilizada (Padrão 0)? ")
+ordem = int(ordem) + 1
 
+print("Criando o modelo...")
 arquivo = "./corpus/composite.txt"
-dicionario = criarDicionario(lerArquivo(arquivo), 3)
-print(gerarFrase(dicionario, 3))
+dicionario = criarDicionario(lerArquivo(arquivo), ordem)
+print()
+
+print(gerarFrase(dicionario, ordem))
+print()
 
