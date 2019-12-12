@@ -29,12 +29,13 @@ Escolhi pegar piadas porque texto gerado incoerente pode ser engraçado, mas uti
 
 <h3>Como usar?</h3>
 
-O arquivo nmarkovchain
+Basta rodar o arquivo `nmarkovchain.py`. Será perguntado qual a ordem da Cadeia de Markov. O valor padrão é 0.
+Valores maiores retornarão frases mais coesas, mas isso acabará repetindo as frases originais. Recomendo os valores 1 e 2.
 
-Segue abaixo fontes de inspiração e sites de onde obtive as piadas (através de webscraping).
+Segue abaixo fontes de inspiração e sites de onde obtive as piadas (através de webscraping):
 
-https://hackernoon.com/from-what-is-a-markov-model-to-here-is-how-markov-models-work-1ac5f4629b71
-https://github.com/CrowdTruth/Short-Text-Corpus-For-Humor-Detection
-http://www.laughfactory.com/
-https://www.rd.com/jokes/one-liners
-https://onelinefun.com/
+https://hackernoon.com/from-what-is-a-markov-model-to-here-is-how-markov-models-work-1ac5f4629b71  
+https://github.com/CrowdTruth/Short-Text-Corpus-For-Humor-Detection  
+http://www.laughfactory.com/  
+https://www.rd.com/jokes/one-liners  
+https://onelinefun.com/  
