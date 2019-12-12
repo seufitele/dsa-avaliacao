@@ -1,6 +1,7 @@
 
 from random import random
 from random import randint
+import pickle
 
 
 #Parte que lê o arquivo
@@ -11,20 +12,31 @@ def lerArquivo(caminhoArquivo):
 
     return dadosArquivo
 
-#Parte que 'limpa' os dados
-def processarDados(dados):
 
-    linhas = dados.split('\n')
+def cleanLine(theLine):
 
-    print(linhas[0])
+        #   $c = comma
+        #   $d = dot
+        #   $d = dot dot dot
+        #   $0 = start
+        #   $$$ = cardinality
 
-    return ""
+        #somaTokens = "$$$"
 
-#vai ignorar essa parte por enquanto
-def limparDados(dado):
+    linhaAtual = theLine.strip().lower()
+    linhaAtual = linhaAtual.replace(",", " $c") #da um espaco para contar como um novo token
+    linhaAtual = linhaAtual.replace("...", " $ddd ") #da um espaco para contar como um novo token
+    linhaAtual = linhaAtual.replace("..", " $ddd ") #da um espaco para contar como um novo token
+    linhaAtual = linhaAtual.replace(".", " $d") #transforma num caracter especial (fim de linha)
+    linhaAtual = linhaAtual.replace("?", " $d") #transforma num caracter especial (fim de linha)
+    linhaAtual = linhaAtual.replace("!", " $d") #transforma num caracter especial (fim de linha)
 
-    #remove apenas as virgulas por enquanto
-    return ""
+    linhaAtual = linhaAtual.replace("-", "")
+    linhaAtual = linhaAtual.replace("\"", "")
+
+    linhaAtual = "$0 " + linhaAtual     
+
+    return linhaAtual
 
 
 #Cria um dicionario de markov de ordem 0, ou seja, considerando apenas a palavra atual para 
@@ -35,24 +47,8 @@ def criarDicionario(dados):
 
     #assume que dados é um conjunto de linhas não vazio
     for linha in dados.split('\n'):
-        
-        #   $c = comma
-        #   $d = dot
-        #   $d = dot dot dot
-        #   $0 = start
-        #   $$$ = cardinality
 
-        #somaTokens = "$$$"
-
-        linhaAtual = linha.strip().lower()
-        linhaAtual = linhaAtual.replace(",", " $c") #da um espaco para contar como um novo token
-        linhaAtual = linhaAtual.replace("...", " $ddd ") #da um espaco para contar como um novo token
-        linhaAtual = linhaAtual.replace("..", " $ddd ") #da um espaco para contar como um novo token
-        linhaAtual = linhaAtual.replace(".", " $d") #transforma num caracter especial (fim de linha)
-        linhaAtual = linhaAtual.replace("?", " $d") #transforma num caracter especial (fim de linha)
-        linhaAtual = linhaAtual.replace("!", " $d") #transforma num caracter especial (fim de linha)
-
-        linhaAtual = "$0 " + linhaAtual     
+        linhaAtual = cleanLine(linha)
 
         #divide a linha em palavras, removendo as palavras vazias
         tokens = list(filter(lambda ele : len(ele.strip()) != 0, linhaAtual.split(" ")))
@@ -97,7 +93,7 @@ def gerarPalavra(dict, curWord):
         if (stateSum >= randomState):
             return state
 
-    raise "Erro"
+    raise "Erro - não deveria chegar até aqui"
 
 def gerarFrase(dict):
 
@@ -115,8 +111,7 @@ def gerarFrase(dict):
 
     return palavras
 
-arquivo = "C:/Users/ddd/Desktop/corpus"
-
+arquivo = "./corpus/composite.txt"
 dicionario = criarDicionario(lerArquivo(arquivo))
-
 print(gerarFrase(dicionario))
+
