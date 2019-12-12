@@ -1,8 +1,9 @@
-# dsa-avaliacao
 
-Trata-se de Projeto para Formação de Cientista de Dados da Data Science Academy (https://www.datascienceacademy.com.br).
+<h1>Projeto de Cadeia de Markov</h1>
 
-Projeto de Markov Chain (Cadeia de Markov) para geração 'inteligente' de texto de forma automatizada.
+Trata-se de Projeto para Formação de Cientista de Dados da [Data Science Academy](https://www.datascienceacademy.com.br).
+
+Projeto de Cadeia de Markov [(Markov Chain)](https://en.wikipedia.org/wiki/Markov_chain) para geração 'inteligente' de texto de forma automatizada.
 O caso de uso escolhido foi geração de texto a partir de fontes de piadas obitdas na internet (one-liners, como eles chamam).
 
 Por que Cadeia de Markov?
