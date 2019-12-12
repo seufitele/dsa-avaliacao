@@ -39,8 +39,8 @@ Obter mais dados é um excelente maneira de melhorar os resultados. Foi possíve
 
 Um outro ponto interessante seria variar o Modelo de Markov para dar prioridade para estados com mais opções. 
 Dessa forma seria possível aumentar os estados sem prejudicar a variabilidade das frases.
-  
-  
+<br/>
+<br/>
 Segue abaixo fontes de inspiração e sites de onde obtive as piadas (através de webscraping):
 
 https://hackernoon.com/from-what-is-a-markov-model-to-here-is-how-markov-models-work-1ac5f4629b71  
