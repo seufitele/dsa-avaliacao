@@ -38,6 +38,8 @@ def cleanLine(theLine):
 
     linhaAtual = linhaAtual.replace("-", "")
     linhaAtual = linhaAtual.replace("\"", "")
+    linhaAtual = linhaAtual.replace("“", "")
+    linhaAtual = linhaAtual.replace("”", "")
 
     linhaAtual = "$0 " + linhaAtual     
 
