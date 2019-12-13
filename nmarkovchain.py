@@ -102,7 +102,7 @@ def gerarPalavra(dict, prevStates):
 
     #adicao para muitas vezes nao aceitar a única palavra possivel
     #isso ajuda a evitar as frases prontas
-    if (totalOcc == 1 and len(prevStates) > 0 and randint(0, 3) != 0):
+    if (totalOcc == 1 and len(prevStates) > 0 and randint(0, 5) != 0):
         return gerarPalavra(dict, prevStates[1:])
 
     #gera a probabilidade para descobrir a palavra
