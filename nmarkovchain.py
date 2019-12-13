@@ -95,10 +95,15 @@ def gerarPalavra(dict, prevStates):
         if (len(prevStates) > 0):
             return gerarPalavra(dict, prevStates[1:])
         else:
-            return ""
+            return "$d"
 
     #conta quantas variacoes aquele estado possui
     totalOcc = sum(map(lambda chave : possibleStates.get(chave), possibleStates.keys()))
+
+    #adicao para muitas vezes nao aceitar a única palavra possivel
+    #isso ajuda a evitar as frases prontas
+    if (totalOcc == 1 and len(prevStates) > 0 and randint(0, 3) != 0):
+        return gerarPalavra(dict, prevStates[1:])
 
     #gera a probabilidade para descobrir a palavra
     randomState = randint(1, totalOcc) 
@@ -141,12 +146,15 @@ def gerarFrase(dict, numberStates = 1):
 
         palavras.append(palavraAtual)
         prevStates.append(palavraAtual)
+
         prevStates = prevStates[max(len(prevStates) - numberStates, 0):]
         palavraAtual = gerarPalavra(dict, prevStates)
+        
     
     return formatar(palavras)
 
 ordem = input("Qual a ordem da cadeia a ser utilizada (Padrão 0)? ")
+nfrases = input("Quantas frases a gerar? ")
 ordem = int(ordem) + 1
 
 print("Criando o modelo...")
@@ -154,6 +162,8 @@ arquivo = "./corpus/composite.txt"
 dicionario = criarDicionario(lerArquivo(arquivo), ordem)
 print()
 
-print(gerarFrase(dicionario, ordem))
-print()
+for idx in range(0, int(nfrases)):
+    print(gerarFrase(dicionario, ordem))
+    print()
+
 
