@@ -30,7 +30,7 @@ Escolhi pegar piadas porque texto gerado incoerente pode ser engraçado, mas uti
 <h3>Como usar?</h3>
 
 Basta rodar o arquivo `nmarkovchain.py`. Será perguntado qual a ordem da Cadeia de Markov. O valor padrão é 0.
-Valores maiores retornarão frases mais coesas, mas isso acabará repetindo as frases originais. Recomendo os valores 1 e 2.
+Valores maiores retornarão frases mais coesas, algumas vezes repetindo as frases originais. Valores por volta de 5 são os mais eficientes.
 
 <h3>Trabalho posterior</h3>
 
@@ -38,7 +38,7 @@ A eficácia de qualquer modelo está diretamente relacionada à quantidade de da
 Obter mais dados é um excelente maneira de melhorar os resultados. Foi possível ver isso na prática com cada arquivo adicionado.
 
 Um outro ponto interessante seria variar o Modelo de Markov para dar prioridade para estados com mais opções. 
-Dessa forma seria possível aumentar os estados sem prejudicar a variabilidade das frases.
+Dessa forma seria possível aumentar os estados sem prejudicar a variabilidade das frases. (implementado)
 <br/>
 <br/>
 <br/>
